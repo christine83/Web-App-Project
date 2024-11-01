@@ -9,7 +9,7 @@ var app = express()
 app.set('view engine', 'ejs');
 
 // Needed for public directory
-app.use(express.static(__dirname + '/public'));
+<!--app.use(express.static(__dirname + '/public'));-->
 
 // Needed for parsing form data
 app.use(express.json());       
@@ -64,8 +64,8 @@ app.post('Sleep', async function(req, res) {
             console.log("Unable to create new post, no data");
             res.render('Sleep');
         } else {
-            // Create post and store in database
-            const blog = await prisma.post.create({
+            // Create sleep and store in database
+            const blog = await prisma.sleep.create({
                 data: { Name, Age_range, Gender, Sleep_duration, Sleep_time, Email_adddress },
             });
 
@@ -84,7 +84,7 @@ app.post("/delete/:id", async (req, res) => {
     const { id } = req.params;
     
     try {
-        await prisma.post.delete({
+        await prisma.sleep.delete({
             where: { id: parseInt(id) },
         });
       
