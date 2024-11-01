@@ -14,7 +14,7 @@ datasource db {
 }
 
 // Post model represents individual blog posts
-model Post {
+model Sleep {
   id              Int       @id @default(autoincrement())
   Name            String
   Age_range       String
