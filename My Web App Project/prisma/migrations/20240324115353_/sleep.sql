@@ -8,5 +8,5 @@ CREATE TABLE "Sleep" (
     "Sleep_time" TEXT NOT NULL,
     "Email_address" TEXT NOT NULL,
 
-    CONSTRAINT "Post_pkey" PRIMARY KEY ("Id")
+    CONSTRAINT "Sleep_pkey" PRIMARY KEY ("Id")
 );
