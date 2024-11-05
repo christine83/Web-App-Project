@@ -9,7 +9,7 @@ var app = express()
 app.set('view engine', 'ejs');
 
 // Needed for public directory
-// app.use(express.static(__dirname + '/public'))
+app.use(express.static(__dirname + '/public'))
 
 // Needed for parsing form data
 app.use(express.json());       
