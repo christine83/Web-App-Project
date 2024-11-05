@@ -9,7 +9,7 @@ var app = express()
 app.set('view engine', 'ejs');
 
 // Needed for public directory
-<!--app.use(express.static(__dirname + '/public'));-->
+app.use(express.static(__dirname + '/public'))
 
 // Needed for parsing form data
 app.use(express.json());       
@@ -25,7 +25,7 @@ app.get('/', async function(req, res) {
     // Try-Catch for any errors
     try {
         // Get all blog posts
-        const blogs = await prisma.post.findMany({
+        const blogs = await prisma.sleep.findMany({
                 orderBy: [
                   {
                     id: 'desc'
@@ -65,7 +65,7 @@ app.post('Sleep', async function(req, res) {
             res.render('Sleep');
         } else {
             // Create sleep and store in database
-            const blog = await prisma.sleep.create({
+            const blog = await prisma.Sleep.create({
                 data: { Name, Age_range, Gender, Sleep_duration, Sleep_time, Email_adddress },
             });
 
@@ -84,7 +84,7 @@ app.post("/delete/:id", async (req, res) => {
     const { id } = req.params;
     
     try {
-        await prisma.sleep.delete({
+        await prisma.Sleep.delete({
             where: { id: parseInt(id) },
         });
       
