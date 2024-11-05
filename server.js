@@ -69,7 +69,7 @@ app.post('/Sleep', async function(req, res) {
         const { Name, Age_range } = req.body;
 
         // Reload page if empty title or content
-        if (!Name || !Age_range ||) {
+        if (!Name || !Age_range) {
             console.log("Unable to create new post, no name or age range");
             res.render('pages/Sleep');
         } else {
