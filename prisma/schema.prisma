@@ -10,16 +10,16 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("database_url")
+  url      = env("DATABASE_URL")
 }
 
 // Post model represents individual blog posts
-model Sleep {
-  Id        Int       @id @default(autoincrement())
-  Name      String
-  Age_range String
-  Gender    String
+model Post {
+  id        Int       @id @default(autoincrement())
+  Name    String
+  Age_range   String
+  Gender   String
   Sleep_duration  String
-  Sleep_time      String
-  Email_address   String
+  Sleep_time  String
+  Email_address String
 }

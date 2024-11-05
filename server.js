@@ -9,7 +9,7 @@ var app = express()
 app.set('view engine', 'ejs');
 
 // Needed for public directory
-app.use(express.static(__dirname + '/public'))
+// app.use(express.static(__dirname + '/public'))
 
 // Needed for parsing form data
 app.use(express.json());       
@@ -25,7 +25,7 @@ app.get('/', async function(req, res) {
     // Try-Catch for any errors
     try {
         // Get all blog posts
-        const blogs = await prisma.sleep.findMany({
+        const blogs = await prisma.Sleep.findMany({
                 orderBy: [
                   {
                     id: 'desc'
