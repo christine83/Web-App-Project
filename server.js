@@ -9,7 +9,7 @@ var app = express()
 app.set('view engine', 'ejs');
 
 // Needed for public directory
-app.use(express.static(__dirname + '/public'))
+app.use(express.static(__dirname + '/public'));
 
 // Needed for parsing form data
 app.use(express.json());       
@@ -25,7 +25,7 @@ app.get('/', async function(req, res) {
     // Try-Catch for any errors
     try {
         // Get all blog posts
-        const blogs = await prisma.Sleep.findMany({
+        const blogs = await prisma.post.findMany({
                 orderBy: [
                   {
                     id: 'desc'
@@ -34,39 +34,48 @@ app.get('/', async function(req, res) {
         });
 
         // Render the homepage with all the blog posts
-        await res.render('Home', { blogs: blogs });
+        await res.render('pages/Home', { blogs: blogs });
       } catch (error) {
-        res.render('Home');
+        res.render('pages/Home');
         console.log(error);
       } 
 });
 
 // About page
-app.get('About', function(req, res) {
-    res.render('About');
+app.get('/About', function(req, res) {
+    res.render('pages/About');
 });
 
-// Sleep page
-app.get('Sleep', function(req, res) {
-    res.render('Sleep');
+// New post page
+app.get('/Sleep', function(req, res) {
+    res.render('pages/Sleep');
 });
+
+// Demo page
+//app.get('/demo', async function(req, res) {
+
+ // var blog_posts = await prisma.post.findMany();
+ // console.log(blog_posts);
+
+ // res.render('pages/demo', {blog_posts: blog_posts});
+//});
 
 // Create a new post
-app.post('Sleep', async function(req, res) {
+app.post('/Sleep', async function(req, res) {
     
     // Try-Catch for any errors
     try {
         // Get the title and content from submitted form
-        const { Name, Age_range, Gender, Sleep_duration, Sleep_time, Email_adddress } = req.body;
+        const { Name, Age_range } = req.body;
 
         // Reload page if empty title or content
-        if (!Name || !Age_range || !Gender || !Sleep_duration || !Sleep_time || !Email_adddress) {
-            console.log("Unable to create new post, no data");
-            res.render('Sleep');
+        if (!Name || !Age_range ||) {
+            console.log("Unable to create new post, no name or age range");
+            res.render('pages/Sleep');
         } else {
-            // Create sleep and store in database
-            const blog = await prisma.Sleep.create({
-                data: { Name, Age_range, Gender, Sleep_duration, Sleep_time, Email_adddress },
+            // Create post and store in database
+            const blog = await prisma.post.create({
+                data: { Name, Age_range },
             });
 
             // Redirect back to the homepage
@@ -74,7 +83,7 @@ app.post('Sleep', async function(req, res) {
         }
       } catch (error) {
         console.log(error);
-        res.render('Sleep');
+        res.render('pages/Sleep');
       }
 
 });
@@ -84,7 +93,7 @@ app.post("/delete/:id", async (req, res) => {
     const { id } = req.params;
     
     try {
-        await prisma.Sleep.delete({
+        await prisma.post.delete({
             where: { id: parseInt(id) },
         });
       
