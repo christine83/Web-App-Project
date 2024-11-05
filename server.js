@@ -41,14 +41,29 @@ app.get('/', async function(req, res) {
       } 
 });
 
+// Home page
+app.get('/Home', function(req, res) {
+  res.render('pages/Home');
+});
+
 // About page
 app.get('/About', function(req, res) {
     res.render('pages/About');
 });
 
-// New post page
+// Food page
+app.get('/Food', function(req, res) {
+  res.render('pages/Food');
+});
+
+// Sleep page
 app.get('/Sleep', function(req, res) {
     res.render('pages/Sleep');
+});
+
+// Exercise page
+app.get('/Exercise', function(req, res) {
+  res.render('pages/Exercise');
 });
 
 // Demo page
