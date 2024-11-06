@@ -1,3 +1,5 @@
+const { application } = require("express");
+
 function reply()
 {
 event.preventDefault();
@@ -151,16 +153,12 @@ function sleep()
 {
 event.preventDefault();
 
-
-
 var ageElement = document.getElementById("age_range");
 var age_range = ageElement.options[ageElement.selectedIndex].value;
 
 
-
 var sleepElement = document.getElementById("sleep_duration");
 var sleep_duration = sleepElement.options[sleepElement.selectedIndex].value;
-
 
 
 var sleepRecommendation = evaluateSleep(age_range, sleep_duration);
@@ -171,7 +169,7 @@ recommendationElement.innerHTML = sleepRecommendation;
 var sleepModal = new bootstrap.Modal(document.getElementById('sleepModal'), { keyboard: false })
 sleepModal.show();
 
-
+app.post('/Sleep');
 }
 
 
