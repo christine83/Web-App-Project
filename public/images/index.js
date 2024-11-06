@@ -153,17 +153,17 @@ event.preventDefault();
 
 
 
-var ageElement = document.getElementById("Age_range");
-var Age_range = ageElement.options[ageElement.selectedIndex].value;
+var ageElement = document.getElementById("age_range");
+var age_range = ageElement.options[ageElement.selectedIndex].value;
 
 
 
-var sleepElement = document.getElementById("Sleep_duration");
-var Sleep_duration = sleepElement.options[sleepElement.selectedIndex].value;
+var sleepElement = document.getElementById("sleep_duration");
+var sleep_duration = sleepElement.options[sleepElement.selectedIndex].value;
 
 
 
-var sleepRecommendation = evaluateSleep(Age_range, Sleep_duration);
+var sleepRecommendation = evaluateSleep(age_range, sleep_duration);
 
 var recommendationElement = document.getElementById("recommendation_output");
 recommendationElement.innerHTML = sleepRecommendation;
@@ -175,40 +175,40 @@ sleepModal.show();
 }
 
 
-function evaluateSleep(Age_range, Sleep_duration){
-    if(Age_range == "Below 25" || "25 - 35" || "36 - 45" || "Above 45"){
-        if(Sleep_duration == "Less than 6 hours"){
+function evaluateSleep(age_range, sleep_duration){
+    if(age_range == "Below 25" || "25 - 35" || "36 - 45" || "Above 45"){
+        if(sleep_duration == "Less than 6 hours"){
             return "You need at least 6 to 7 hours of sleep.";
         }
     }
-    if(Age_range == "Below 25"|| "25 - 35" || "36 - 45"){
-        if(Sleep_duration == "6 to 7 hours"){
+    if(age_range == "Below 25"|| "25 - 35" || "36 - 45"){
+        if(sleep_duration == "6 to 7 hours"){
             return "Try to sleep for 7 hours if you can.";
         }
     }
-    if(Age_range == "Below 25" || "25 - 35" || "36 - 45"){
-        if(Sleep_duration == "7 to 8 hours"){
+    if(age_range == "Below 25" || "25 - 35" || "36 - 45"){
+        if(sleep_duration == "7 to 8 hours"){
             return "Great to know you sleep sufficiently.";
         }
     }
-    if(Age_range == "Below 25" || "25 - 35" || "36 - 45"){
-        if(Sleep_duration == "More than 8 hours"){
+    if(age_range == "Below 25" || "25 - 35" || "36 - 45"){
+        if(sleep_duration == "More than 8 hours"){
             return "You certainly sleep a lot.";
         }
     }
     
-    if(Age_range == "Above 45"){
-        if(Sleep_duration == "6 to 7 hours"){
+    if(age_range == "Above 45"){
+        if(sleep_duration == "6 to 7 hours"){
             return "Great to know you sleep sufficiently";
         }
     }
-    if(Age_range == "Above 45"){
-        if(Sleep_duration == "7 to 8 hours"){
+    if(age_range == "Above 45"){
+        if(sleep_duration == "7 to 8 hours"){
             return "You certainly sleep more.";
         }
     }
-    if(Age_range == "Above 45"){
-        if(Sleep_duration == "More than 8 hours"){
+    if(age_range == "Above 45"){
+        if(sleep_duration == "More than 8 hours"){
             return "You certainly sleep a lot.";
         }
     }

@@ -76,21 +76,21 @@ app.get('/Exercise', function(req, res) {
 //});
 
 // Create a new post
-app.post('/pages/Sleep', async function(req, res) {
+app.post('pages/Sleep', async function(req, res) {
     
     // Try-Catch for any errors
     try {
         // Get the title and content from submitted form
-        const { Name, Age_range, Gender, Sleep_duration, Sleep_time, Email_address } = req.body;
+        const { name, age_range, male, female, sleep_duration, sleep_time, email_address } = req.body;
 
         // Reload page if empty title or content
-        if (!Name || !Age_range || !Gender || !Sleep_duration || !Sleep_time || !Email_address ) {
+        if (!name || !age_range || !male || ! female || !sleep_duration || !sleep_time || !email_address ) {
             console.log("Unable to create new post, no inputs");
             res.render('pages/Sleep');
         } else {
             // Create post and store in database
             const blog = await prisma.post.create({
-                data: { Name, Age_range, Gender, Sleep_duration, Sleep_time, Email_address},
+                data: { name, age_range, male, female, sleep_duration, sleep_time, email_address},
             });
 
             // Redirect back to the homepage
