@@ -178,7 +178,7 @@ recommendationElement.innerHTML = sleepRecommendation;
 var sleepModal = new bootstrap.Modal(document.getElementById('sleepModal'), { keyboard: false })
 sleepModal.show();
 
-// Create an object with the data
+Create an object with the data
 const userData = { Name, Age_range, Gender, Sleep_duration, Sleep_time, Email_address };
 
 try {
@@ -197,7 +197,7 @@ try {
   console.error('Error:', error);
   document.getElementById('responseMessage').innerText = 'Error submitting data!';
 }
-
+}
 
 
 function evaluateSleep(Age_range, Sleep_duration){
