@@ -151,23 +151,16 @@ function sleep()
 {
 event.preventDefault();
 
-var nameElement = document.getElementById("Name");
-var Name = nameElement.options[nameElement.selectedIndex].value;
+
 
 var ageElement = document.getElementById("Age_range");
 var Age_range = ageElement.options[ageElement.selectedIndex].value;
 
-var genderElement = document.getElementById("Gender");
-var Gender = genderElement.options[genderElement.selectedIndex].value;
+
 
 var sleepElement = document.getElementById("Sleep_duration");
 var Sleep_duration = sleepElement.options[sleepElement.selectedIndex].value;
 
-var timeElement = document.getElementById("Sleep_time");
-var Sleep_time = timeElement.options[timeElement.selectedIndex].value;
-
-var emailElement = document.getElementById("Email_address");
-var Email_address = emailElement.options[emailElement.selectedIndex].value;
 
 
 var sleepRecommendation = evaluateSleep(Age_range, Sleep_duration);
@@ -178,25 +171,7 @@ recommendationElement.innerHTML = sleepRecommendation;
 var sleepModal = new bootstrap.Modal(document.getElementById('sleepModal'), { keyboard: false })
 sleepModal.show();
 
-Create an object with the data
-const userData = { Name, Age_range, Gender, Sleep_duration, Sleep_time, Email_address };
 
-try {
-  // Send POST request to server
-  const response = await fetch('/pages/Sleep', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(userData) // Send the data as JSON
-  });
-
-  const result = await response.json(); // Assuming server sends a JSON response
-  document.getElementById('responseMessage').innerText = result.message;
-} catch (error) {
-  console.error('Error:', error);
-  document.getElementById('responseMessage').innerText = 'Error submitting data!';
-}
 }
 
 
