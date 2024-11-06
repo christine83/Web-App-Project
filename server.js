@@ -76,7 +76,7 @@ app.get('/Exercise', function(req, res) {
 //});
 
 // Create a new post
-app.post('/Sleep', async function(req, res) {
+app.post('/pages/Sleep', async function(req, res) {
     
     // Try-Catch for any errors
     try {

@@ -151,13 +151,26 @@ function sleep()
 {
 event.preventDefault();
 
-var ageElement = document.getElementById("age_range");
-var age_range = ageElement.options[ageElement.selectedIndex].value;
+var nameElement = document.getElementById("Name");
+var Name = nameElement.options[nameElement.selectedIndex].value;
 
-var sleepElement = document.getElementById("sleep_duration");
-var sleep_duration = sleepElement.options[sleepElement.selectedIndex].value;
+var ageElement = document.getElementById("Age_range");
+var Age_range = ageElement.options[ageElement.selectedIndex].value;
 
-var sleepRecommendation = evaluateSleep(age_range, sleep_duration);
+var genderElement = document.getElementById("Gender");
+var Gender = genderElement.options[genderElement.selectedIndex].value;
+
+var sleepElement = document.getElementById("Sleep_duration");
+var Sleep_duration = sleepElement.options[sleepElement.selectedIndex].value;
+
+var timeElement = document.getElementById("Sleep_time");
+var Sleep_time = timeElement.options[timeElement.selectedIndex].value;
+
+var emailElement = document.getElementById("Email_address");
+var Email_address = emailElement.options[emailElement.selectedIndex].value;
+
+
+var sleepRecommendation = evaluateSleep(Age_range, Sleep_duration);
 
 var recommendationElement = document.getElementById("recommendation_output");
 recommendationElement.innerHTML = sleepRecommendation;
@@ -165,45 +178,62 @@ recommendationElement.innerHTML = sleepRecommendation;
 var sleepModal = new bootstrap.Modal(document.getElementById('sleepModal'), { keyboard: false })
 sleepModal.show();
 
+// Create an object with the data
+const userData = { Name, Age_range, Gender, Sleep_duration, Sleep_time, Email_address };
 
+try {
+  // Send POST request to server
+  const response = await fetch('/pages/Sleep', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(userData) // Send the data as JSON
+  });
+
+  const result = await response.json(); // Assuming server sends a JSON response
+  document.getElementById('responseMessage').innerText = result.message;
+} catch (error) {
+  console.error('Error:', error);
+  document.getElementById('responseMessage').innerText = 'Error submitting data!';
 }
 
 
 
-function evaluateSleep(age_range, sleep_duration){
-    if(age_range == "Below 25" || "25 - 35" || "36 - 45" || "Above 45"){
-        if(sleep_duration == "Less than 6 hours"){
+function evaluateSleep(Age_range, Sleep_duration){
+    if(Age_range == "Below 25" || "25 - 35" || "36 - 45" || "Above 45"){
+        if(Sleep_duration == "Less than 6 hours"){
             return "You need at least 6 to 7 hours of sleep.";
         }
     }
-    if(age_range == "Below 25"|| "25 - 35" || "36 - 45"){
-        if(sleep_duration == "6 to 7 hours"){
+    if(Age_range == "Below 25"|| "25 - 35" || "36 - 45"){
+        if(Sleep_duration == "6 to 7 hours"){
             return "Try to sleep for 7 hours if you can.";
         }
     }
-    if(age_range == "Below 25" || "25 - 35" || "36 - 45"){
-        if(sleep_duration == "7 to 8 hours"){
+    if(Age_range == "Below 25" || "25 - 35" || "36 - 45"){
+        if(Sleep_duration == "7 to 8 hours"){
             return "Great to know you sleep sufficiently.";
         }
     }
-    if(age_range == "Below 25" || "25 - 35" || "36 - 45"){
-        if(sleep_duration == "More than 8 hours"){
+    if(Age_range == "Below 25" || "25 - 35" || "36 - 45"){
+        if(Sleep_duration == "More than 8 hours"){
             return "You certainly sleep a lot.";
         }
     }
     
-    if(age_range == "Above 45"){
-        if(sleep_duration == "6 to 7 hours"){
+    if(Age_range == "Above 45"){
+        if(Sleep_duration == "6 to 7 hours"){
             return "Great to know you sleep sufficiently";
         }
     }
-    if(age_range == "Above 45"){
-        if(sleep_duration == "7 to 8 hours"){
+    if(Age_range == "Above 45"){
+        if(Sleep_duration == "7 to 8 hours"){
             return "You certainly sleep more.";
         }
     }
-    if(age_range == "Above 45"){
-        if(sleep_duration == "More than 8 hours"){
+    if(Age_range == "Above 45"){
+        if(Sleep_duration == "More than 8 hours"){
             return "You certainly sleep a lot.";
         }
     }
