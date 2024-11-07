@@ -81,10 +81,10 @@ app.post('pages/Sleep', async function(req, res) {
     // Try-Catch for any errors
     try {
         // Get the title and content from submitted form
-        const { name, age_range, male, female, sleep_duration, sleep_time, email_address } = req.body;
+        const { name, age_range, gender, sleep_duration, sleep_time, email_address } = req.body;
 
         // Reload page if empty title or content
-        if (!name || !age_range || !male || ! female || !sleep_duration || !sleep_time || !email_address ) {
+        if (!name || !age_range || !gender || !sleep_duration || !sleep_time || !email_address ) {
             console.log("Unable to create new post, no inputs");
             res.render('pages/Sleep');
         } else {

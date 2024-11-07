@@ -18,8 +18,7 @@ model Post {
   id        Int       @id @default(autoincrement())
   name    String
   age_range   String
-  male   String
-  female String
+  gender String
   sleep_duration  String
   sleep_time  String
   email_address String
