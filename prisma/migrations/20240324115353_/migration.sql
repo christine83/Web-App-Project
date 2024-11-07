@@ -1,12 +1,12 @@
 -- CreateTable
-CREATE TABLE "Sleep" (
-    "Id" SERIAL NOT NULL,
-    "Name" TEXT NOT NULL,
-    "Age_range" TEXT NOT NULL,
-    "Gender" TEXT NOT NULL,
-    "Sleep_duration" TEXT NOT NULL,
-    "Sleep_time" TEXT NOT NULL,
-    "Email_address" TEXT NOT NULL,
+CREATE TABLE "Post" (
+    "id" SERIAL NOT NULL,
+    "name" TEXT NOT NULL,
+    "age_range" TEXT NOT NULL,
+    "gender" TEXT NOT NULL,
+    "sleep_duration" TEXT NOT NULL,
+    "sleep_time" TEXT NOT NULL,
+    "email_address" TEXT NOT NULL,
 
-    CONSTRAINT "Sleep_pkey" PRIMARY KEY ("Id")
+    CONSTRAINT "Post_pkey" PRIMARY KEY ("id")
 );
