@@ -90,7 +90,7 @@ app.post('pages/Sleep', async function(req, res) {
         } else {
             // Create post and store in database
             const blog = await prisma.post.create({
-                data: { name, age_range, male, female, sleep_duration, sleep_time, email_address},
+                data: { name, age_range, gender, sleep_duration, sleep_time, email_address},
             });
 
             // Redirect back to the homepage
