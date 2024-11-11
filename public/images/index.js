@@ -177,6 +177,7 @@ mySleepModal.addEventListener('hidden.bs.modal',event =>{
     document.getElementById("sleepForm").submit();
 });
 
+
 function evaluateSleep(age_range, sleep_duration){
     if(age_range == "Below 25" || "25 - 35" || "36 - 45" || "Above 45"){
         if(sleep_duration == "Less than 6 hours"){
