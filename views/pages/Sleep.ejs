@@ -10,8 +10,11 @@
 </head>
 <body>
     <script src="images/index.js" charset="utf-8"></script>
-    
+    <% if (message) { %>
+    <div class="message"><%= message %>
+    </div>  <% } %>
 
+<form id="sleepForm" method="post">
     <div class="feature col">
         <div
           class="feature-icon d-inline-flex align-items-right justify-content-right text-bg-primary bg-gradient fs-2 mb-3">
@@ -19,7 +22,7 @@
         </div>
     <h3 style="color: blue;">Our body regenerates when we rest, do you get enough shuteye?</h3>
     <h4>Fill in this self-check form to discover.</h4>
-<form id="sleepForm" method="post"> 
+
     <div class="form-group">
         <label for="exampleFormControlTextarea1">Name</label>
         <textarea class="form-control" id="name" rows="1" name="name"></textarea>
@@ -79,9 +82,9 @@
           </div>
           <br><br>
          
-          <button class="btn btn-outline-primary" type="submit" onclick="sleep()">Submit</button>
-         
+          <button class="btn btn-outline-primary" type="submit" onclick="sleep()">Submit</button>        
 </form>
+
  <!-- Modal -->
  <div class="modal fade" id="sleepModal" tabindex="-1" aria-labelledby="sleepModalLabel" aria-hidden="true">
     <div class="modal-dialog">

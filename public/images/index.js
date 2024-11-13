@@ -1,4 +1,4 @@
-const { application } = require("express");
+
 
 function reply()
 {
@@ -169,14 +169,12 @@ recommendationElement.innerHTML = sleepRecommendation;
 var sleepModal = new bootstrap.Modal(document.getElementById('sleepModal'), { keyboard: false })
 sleepModal.show();
 
-}
-
 const mySleepModal = document.getElementById("sleepModal");
 mySleepModal.addEventListener('hidden.bs.modal',event =>{
     //thsi will submit the form
     document.getElementById("sleepForm").submit();
 });
-
+}
 
 function evaluateSleep(age_range, sleep_duration){
     if(age_range == "Below 25" || "25 - 35" || "36 - 45" || "Above 45"){

@@ -58,7 +58,7 @@ app.get('/Food', function(req, res) {
 
 // Sleep page
 app.get('/Sleep', function(req, res) {
-    res.render('pages/Sleep');
+    res.render('pages/Sleep',{message:""});
 });
 
 // Exercise page
@@ -76,7 +76,7 @@ app.get('/Exercise', function(req, res) {
 //});
 
 // Create a new post
-app.post('pages/Sleep', async function(req, res) {
+app.post('/Sleep', async function(req, res) {
     
     // Try-Catch for any errors
     try {
@@ -86,7 +86,7 @@ app.post('pages/Sleep', async function(req, res) {
         // Reload page if empty title or content
         if (!name || !age_range || !gender || !sleep_duration || !sleep_time || !email_address ) {
             console.log("Unable to create new post, no inputs");
-            res.render('pages/Sleep');
+            res.render('pages/Sleep', {message:"Please fill up all the fields"});
         } else {
             // Create post and store in database
             const blog = await prisma.post.create({
@@ -94,7 +94,7 @@ app.post('pages/Sleep', async function(req, res) {
             });
 
             // Redirect back to the homepage
-            res.redirect('/');
+            res.redirect('pages/Sleep',{message:"Submitted"});
         }
       } catch (error) {
         console.log(error);
