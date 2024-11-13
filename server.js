@@ -86,14 +86,14 @@ app.post('/Sleep', async function(req, res) {
         // Reload page if empty title or content
         if (!name || !age_range || !gender || !sleep_duration || !sleep_time || !email_address ) {
             console.log("Unable to create new post, no inputs");
-            res.render('pages/Sleep', {message:"Please fill up all the fields"});
+            res.render('pages/Sleep', {message:"Please fill in all the fields"});
         } else {
             // Create post and store in database
             const blog = await prisma.post.create({
                 data: { name, age_range, gender, sleep_duration, sleep_time, email_address},
             });
 
-            // Redirect back to the homepage
+            // Successfully submitted form
             res.render('pages/Sleep',{message:"Submitted"});
         }
       } catch (error) {
