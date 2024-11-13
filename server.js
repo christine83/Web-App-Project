@@ -94,7 +94,7 @@ app.post('/Sleep', async function(req, res) {
             });
 
             // Redirect back to the homepage
-            res.redirect('pages/Sleep',{message:"Submitted"});
+            res.render('pages/Sleep',{message:"Submitted"});
         }
       } catch (error) {
         console.log(error);
