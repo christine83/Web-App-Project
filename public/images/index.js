@@ -171,7 +171,7 @@ sleepModal.show();
 
 const mySleepModal = document.getElementById("sleepModal");
 mySleepModal.addEventListener('hidden.bs.modal',event =>{
-    //thsi will submit the form
+    //this will submit the form
     document.getElementById("sleepForm").submit();
 });
 }

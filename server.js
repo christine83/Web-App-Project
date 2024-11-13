@@ -80,10 +80,10 @@ app.post('/Sleep', async function(req, res) {
     
     // Try-Catch for any errors
     try {
-        // Get the title and content from submitted form
+        // Get the data from submitted form
         const { name, age_range, gender, sleep_duration, sleep_time, email_address } = req.body;
 
-        // Reload page if empty title or content
+        // Reload page if missing data
         if (!name || !age_range || !gender || !sleep_duration || !sleep_time || !email_address ) {
             console.log("Unable to create new post, no inputs");
             res.render('pages/Sleep', {message:"Please fill in all the fields"});
